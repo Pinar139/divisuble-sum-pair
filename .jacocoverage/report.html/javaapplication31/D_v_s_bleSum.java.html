@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="tr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>DıvısıbleSum.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;JavaApplication31&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">javaapplication31</a> &gt; <span class="el_source">DıvısıbleSum.java</span></div><h1>DıvısıbleSum.java</h1><pre class="source lang-java linenums">package javaapplication31;
+import java.util.HashMap;
+import java.util.Scanner;
+
+
+<span class="nc" id="L6">public class DıvısıbleSum {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L8">            System.out.println(&quot;Sample Input&quot;);</span>
+<span class="nc" id="L9">            Scanner in = new Scanner(System.in);/*Klavyeden eleman girmek için tanımlıyoruz.*/</span>
+<span class="nc" id="L10">            int n = in.nextInt();  /*Klavyeden n elemanı giriliyor.*/   //Covered</span>
+<span class="nc bnc" id="L11" title="All 4 branches missed.">            if (n&gt;=1 &amp;&amp; n&lt;=100 )   /*n'nin kısıtlamalarını giriyoruz.*/</span>
+	    {
+<span class="nc" id="L13">            int k = in.nextInt();/*Klavyeden k elemanı giriliyor.*/</span>
+<span class="nc" id="L14">            int a[] = new int[n];/*n elemanlı dizi için yer ayrılıyor.*/</span>
+<span class="nc bnc" id="L15" title="All 2 branches missed.">            for(int a_i=0; a_i &lt; n; a_i++)</span>
+<span class="nc" id="L16">             {   System.out.println(a_i + &quot;. dizi elemanini giriniz: &quot; );  </span>
+<span class="nc" id="L17">                  a[a_i] = in.nextInt();/*Klavyeden dizinin indisleri giriliyor.*/</span>
+             }
+<span class="nc" id="L19">           System.out.println(numberOfPairs(a, k));/*fonksiyonu çağırıyor.*/</span>
+<span class="nc" id="L20">             }</span>
+            else
+                  {
+<span class="nc" id="L23">                  System.out.println(&quot;Bu sınırlar dışına çıkmayınız  1&lt;= n &lt;=100 &quot; );  }}</span>
+    public static int numberOfPairs(int[] ar, int k){
+<span class="fc" id="L25">        int pairCount = 0;</span>
+        int sum;
+<span class="fc" id="L27">        HashMap&lt;Integer, Integer&gt; checked = new HashMap&lt;&gt;();/*Anahtarları değere işler.Her anahtar sadece bir kez kullanılabilir....*/</span>
+       try{
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">           if ( ar.length == 0 )</span>
+<span class="nc" id="L30">         { System.out.println(&quot;Lütfen en az sıfırdan farklı bir sayı giriniz.!!&quot;);}</span>
+<span class="pc bpc" id="L31" title="2 of 4 branches missed.">         else if(ar.length&gt;=1 &amp;&amp; ar.length&lt;=100)</span>
+         {
+<span class="fc bfc" id="L33" title="All 2 branches covered.">         for (int i = 0; i &lt; ar.length; i++){      /*ar.length dizinin uzunlugunu verir....*/</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">         for (int j = i + 1; j &lt; ar.length; j++){</span>
+<span class="fc" id="L35">         sum = ar[i] + ar[j];</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">         if (checked.containsKey(sum)){ /*Belirtilen anahtar için bir eşleme olup olmadığını kontrol eder....*/</span>
+<span class="fc" id="L37">         System.out.println(&quot;a(&quot; + i + &quot;) +  a(&quot; + j + &quot;) = \t  &quot; + sum);</span>
+<span class="fc" id="L38">         pairCount++;}</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">         else if((sum % k) == 0){</span>
+<span class="fc" id="L40">         pairCount++;</span>
+<span class="fc" id="L41">         System.out.println(&quot;a(&quot; + i + &quot;) +  a(&quot; + j + &quot;) = \t  &quot; + sum);</span>
+<span class="fc" id="L42">         checked.put(sum, 1);/*Kontrol ediliyor.*/}}}}</span>
+         else
+         {
+<span class="nc" id="L45">         System.out.println(&quot;Bu sınırlar dışına çıkmayınız 1&lt;= n &lt;=100&quot; ); }}</span>
+<span class="nc" id="L46">         catch(ArithmeticException hata1)/*try catch ile sıfıra bölme hatası kontrol ediliyor */</span>
+             {
+<span class="nc" id="L48">              System.out.println(&quot;Bölen sayısını sıfırdan farklı giriniz.!!&quot;);</span>
+<span class="fc" id="L49">             }System.out.println(&quot;Expected output&quot;);</span>
+<span class="fc" id="L50">              return pairCount;}}</span>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
